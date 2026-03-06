@@ -1,35 +1,44 @@
 ---
-description: Git version control commands for the RateMyLecture project
+description: Git version control commands for the LecRate project
 ---
 
-# Git Commands for RateMyLecture
+# Git Commands for LecRate
 
 This project uses Git for version control. The Git executable is at `C:\progra~1\Git\bin\git.exe`.
 
 The user (Ahmed) does NOT use a terminal — all Git commands should be run by the assistant on their behalf.
 
 ## Save current changes (حفظ التعديلات)
+
 When the user says "احفظ النسخة دي" or "save this version":
 // turbo
+
 1. `C:\progra~1\Git\bin\git.exe add .`
 2. `C:\progra~1\Git\bin\git.exe commit -m "وصف التعديل"`
 
 ## Revert to last saved version (الرجوع للنسخة السابقة)
+
 When the user says "رجعني للنسخة اللي قبلها" or "revert":
+
 1. `C:\progra~1\Git\bin\git.exe checkout .`
 
 ## Check what changed (شوف إيه اللي اتغيّر)
+
 When the user says "إيه اللي اتغيّر" or "what changed":
 // turbo
+
 1. `C:\progra~1\Git\bin\git.exe status`
-// turbo
+   // turbo
 2. `C:\progra~1\Git\bin\git.exe diff --stat`
 
 ## View history (تاريخ التعديلات)
+
 // turbo
+
 1. `C:\progra~1\Git\bin\git.exe log --oneline -n 10`
 
 ## Important Notes
+
 - The `.env.local` file contains real Supabase credentials and is excluded from Git via `.gitignore`
 - The first commit is: `v1.0 - النسخة الشغالة الأولى - RateMyLecture`
 - The project is at: `D:\Projects\rate-my-lecture`
