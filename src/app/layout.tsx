@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "RateMyLecture - قيّم محاضراتك",
+  title: "LecRate - قيّم محاضراتك",
   description: "منصة لتقييم واكتشاف مصادر الدراسة الجامعية",
 };
 

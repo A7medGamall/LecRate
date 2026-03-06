@@ -28,7 +28,7 @@ export function Navbar() {
                             <GraduationCap className="w-5 h-5 text-white" />
                         </div>
                         <span className="font-bold text-lg gradient-text hidden sm:block">
-                            RateMyLecture
+                            LecRate
                         </span>
                     </Link>
 

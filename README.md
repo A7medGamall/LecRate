@@ -1,4 +1,4 @@
-# RateMyLecture — قيّم محاضراتك
+# LecRate — قيّم محاضراتك
 
 > منصة مجانية لتقييم واكتشاف مصادر الدراسة الجامعية
 
@@ -50,14 +50,14 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Home page with CTA buttons |
-| `/rate` | Multi-step wizard to rate lecture sources |
-| `/browse` | Browse & sort rated sources |
-| `/source/[id]` | Source detail with all ratings |
-| `/stats` | Platform statistics |
-| `/admin` | Password-protected admin panel |
+| Route          | Description                               |
+| -------------- | ----------------------------------------- |
+| `/`            | Home page with CTA buttons                |
+| `/rate`        | Multi-step wizard to rate lecture sources |
+| `/browse`      | Browse & sort rated sources               |
+| `/source/[id]` | Source detail with all ratings            |
+| `/stats`       | Platform statistics                       |
+| `/admin`       | Password-protected admin panel            |
 
 ## Project Structure
 

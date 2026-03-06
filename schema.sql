@@ -1,4 +1,4 @@
--- RateMyLecture Database Schema
+-- LecRate Database Schema
 -- Run this SQL in your Supabase SQL Editor to create all tables
 
 -- 1. Create lecture_type enum
