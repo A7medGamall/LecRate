@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +19,22 @@ export function RatingForm({ sourceId, onRatingAdded }: RatingFormProps) {
     const [hoveredScore, setHoveredScore] = useState(0);
     const [comment, setComment] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [alreadyRated, setAlreadyRated] = useState(false);
+
+    // Check if user already rated this source
+    useEffect(() => {
+        const rated = localStorage.getItem(`lecrate-rated-${sourceId}`);
+        if (rated) setAlreadyRated(true);
+    }, [sourceId]);
+
+    if (alreadyRated) {
+        return (
+            <div className="text-center py-4 px-3 rounded-xl bg-primary/10 border border-primary/20">
+                <p className="text-sm font-semibold text-primary">✅ لقد قمت بتقييم هذا المصدر بالفعل</p>
+                <p className="text-xs text-muted-foreground mt-1">شكراً لمساهمتك!</p>
+            </div>
+        );
+    }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -37,9 +53,13 @@ export function RatingForm({ sourceId, onRatingAdded }: RatingFormProps) {
 
             if (error) throw error;
 
+            // Save to localStorage to prevent duplicate ratings
+            localStorage.setItem(`lecrate-rated-${sourceId}`, "true");
+
             toast.success("تم إضافة التقييم بنجاح!");
             setScore(0);
             setComment("");
+            setAlreadyRated(true);
             onRatingAdded?.();
         } catch {
             toast.error("حدث خطأ أثناء إضافة التقييم");

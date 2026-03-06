@@ -109,6 +109,9 @@ export default function RatePage() {
 
             if (ratingError) throw ratingError;
 
+            // Save to localStorage to prevent duplicate ratings
+            localStorage.setItem(`lecrate-rated-${sourceData.id}`, "true");
+
             toast.success("تم إضافة المصدر والتقييم بنجاح!");
             setNewTitle("");
             setNewUrl("");
@@ -256,15 +259,19 @@ export default function RatePage() {
                                                 />
                                             </div>
                                         ) : (
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                onClick={() => { setRatingSourceId(source.id); setShowAddSource(false); }}
-                                                className="gap-2 mt-1"
-                                            >
-                                                <Star className="w-4 h-4" />
-                                                أضف تقييماً
-                                            </Button>
+                                            typeof window !== 'undefined' && localStorage.getItem(`lecrate-rated-${source.id}`) ? (
+                                                <div className="mt-1 text-xs text-primary font-semibold">✅ تم التقييم</div>
+                                            ) : (
+                                                <Button
+                                                    variant="outline"
+                                                    size="sm"
+                                                    onClick={() => { setRatingSourceId(source.id); setShowAddSource(false); }}
+                                                    className="gap-2 mt-1"
+                                                >
+                                                    <Star className="w-4 h-4" />
+                                                    أضف تقييماً
+                                                </Button>
+                                            )
                                         )}
                                     </CardContent>
                                 </Card>
