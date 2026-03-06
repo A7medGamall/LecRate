@@ -252,6 +252,7 @@ export default function RatePage() {
                                             <div className="mt-4 pt-4 border-t">
                                                 <RatingForm
                                                     sourceId={source.id}
+                                                    sourceUrl={source.url}
                                                     onRatingAdded={() => {
                                                         setRatingSourceId(null);
                                                         fetchSources(selectedLecture.id);

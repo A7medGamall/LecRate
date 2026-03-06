@@ -3,21 +3,24 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Star, Send, Loader2 } from "lucide-react";
+import { Star, Send, Loader2, Link as LinkIcon } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 interface RatingFormProps {
     sourceId: string;
+    sourceUrl?: string | null;
     onRatingAdded?: () => void;
 }
 
-export function RatingForm({ sourceId, onRatingAdded }: RatingFormProps) {
+export function RatingForm({ sourceId, sourceUrl, onRatingAdded }: RatingFormProps) {
     const [score, setScore] = useState(0);
     const [hoveredScore, setHoveredScore] = useState(0);
     const [comment, setComment] = useState("");
+    const [linkUrl, setLinkUrl] = useState("");
     const [submitting, setSubmitting] = useState(false);
     const [alreadyRated, setAlreadyRated] = useState(false);
 
@@ -53,12 +56,21 @@ export function RatingForm({ sourceId, onRatingAdded }: RatingFormProps) {
 
             if (error) throw error;
 
+            // If user provided a URL and source doesn't have one, update the source
+            if (linkUrl.trim() && !sourceUrl) {
+                await supabase
+                    .from("sources")
+                    .update({ url: linkUrl.trim() })
+                    .eq("id", sourceId);
+            }
+
             // Save to localStorage to prevent duplicate ratings
             localStorage.setItem(`lecrate-rated-${sourceId}`, "true");
 
             toast.success("تم إضافة التقييم بنجاح!");
             setScore(0);
             setComment("");
+            setLinkUrl("");
             setAlreadyRated(true);
             onRatingAdded?.();
         } catch {
@@ -102,6 +114,27 @@ export function RatingForm({ sourceId, onRatingAdded }: RatingFormProps) {
                     )}
                 </div>
             </div>
+
+            {/* Add URL if source doesn't have one */}
+            {!sourceUrl && (
+                <div>
+                    <Label htmlFor="linkUrl" className="text-sm font-semibold mb-2 block">
+                        🔗 أضف رابط المصدر (اختياري)
+                    </Label>
+                    <div className="relative">
+                        <LinkIcon className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Input
+                            id="linkUrl"
+                            value={linkUrl}
+                            onChange={(e) => setLinkUrl(e.target.value)}
+                            placeholder="https://..."
+                            className="pr-10"
+                            dir="ltr"
+                        />
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">هذا المصدر ليس له رابط بعد، ساعد زملاءك بإضافته!</p>
+                </div>
+            )}
 
             {/* Comment */}
             <div>
