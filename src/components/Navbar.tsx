@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GraduationCap, Star, BarChart3, Search, Shield, Menu, X } from "lucide-react";
+import { GraduationCap, Star, BarChart3, Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +11,6 @@ const navLinks = [
     { href: "/rate", label: "قيّم محاضرة", icon: Star },
     { href: "/browse", label: "تصفح التقييمات", icon: Search },
     { href: "/stats", label: "الإحصائيات", icon: BarChart3 },
-    { href: "/admin", label: "الإدارة", icon: Shield },
 ];
 
 export function Navbar() {
