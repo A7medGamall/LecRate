@@ -35,7 +35,7 @@
   <!-- Slogan: beside the stars -->
   <text x="36" y="42"
         font-family="'Courier New', monospace"
-        font-size="6.5" fill="#94A3B8" letter-spacing="1.8">
+        font-size="7.5" fill="#94A3B8" letter-spacing="1.6">
     RATE · SHARE · LEARN
   </text>
 </svg>
