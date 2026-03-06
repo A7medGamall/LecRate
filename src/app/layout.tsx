@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" className="dark">
       <body className="antialiased min-h-screen">
         <Navbar />
         <main className="pt-16">
