@@ -124,7 +124,7 @@ export default function SourceDetailPage() {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <RatingForm sourceId={source.id} onRatingAdded={fetchData} />
+                    <RatingForm sourceId={source.id} sourceUrl={source.url} onRatingAdded={fetchData} />
                 </CardContent>
             </Card>
 
