@@ -31,6 +31,21 @@ When the user says "إيه اللي اتغيّر" or "what changed":
    // turbo
 2. `C:\progra~1\Git\bin\git.exe diff --stat`
 
+## Live Deployment (نشر التعديلات على الموقع اللايف)
+
+When the user says "ارفع التعديلات دي لايف" or "deploy live":
+
+1. `C:\progra~1\Git\bin\git.exe checkout master`
+2. `C:\progra~1\Git\bin\git.exe merge development`
+3. `C:\progra~1\Git\bin\git.exe push origin master`
+4. `C:\progra~1\Git\bin\git.exe checkout development`
+
+## Push Development Branch (حفظ التجربة على جيت هب)
+
+When the user says "ارفع التعديلات التجريبية" or "push dev":
+
+1. `C:\progra~1\Git\bin\git.exe push origin development`
+
 ## View history (تاريخ التعديلات)
 
 // turbo
