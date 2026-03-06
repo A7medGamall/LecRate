@@ -20,10 +20,10 @@ export default function HomePage() {
             <GraduationCap className="w-10 h-10 text-white" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">
-            <span className="gradient-text">قيّم محاضراتك</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight tracking-tight">
+            <span className="text-white">قيّم محاضراتك</span>
             <br />
-            <span className="text-foreground/80">واكتشف أفضل المصادر</span>
+            <span className="gradient-text">واكتشف أفضل المصادر</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
